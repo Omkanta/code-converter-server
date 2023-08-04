@@ -19,8 +19,6 @@ app.post('/convert',async (req, res) => {
     const response = await axios.post('https://api.openai.com/v1/chat/completions', {
       messages:[{"role":"user","content":prompt}],
       model:"gpt-3.5-turbo",
-      max_tokens: 150,
-      temperature: 0.7,
     }, {
       headers: {
         'Content-Type': 'application/json',
@@ -46,8 +44,6 @@ app.post('/debug', async (req, res) => {
     const response = await axios.post('https://api.openai.com/v1/chat//completions', {
       messages:[{"role":"user","content":prompt}],
       model:"gpt-3.5-turbo",
-      max_tokens: 150,
-      temperature: 0.7,
     }, {
       headers: {
         'Content-Type': 'application/json',
@@ -69,13 +65,11 @@ app.post('/quality', async (req, res) => {
   const apiKey = process.env.YOUR_OPENAI_API_KEY; // Replace this with your OpenAI API key
   const prompt= `Perform a quality check on the following code:\n${code} and response should have overall summary of code quanlity. 
   Also evaluate the code based on Code consistency, Code performance, Code documentation, Error handling, Code testability,
-  Code modularity, Code complexity, Code duplication, Code readability. Also provide a score out of 10 for every evaluation and overall score.`
+  Code modularity, Code complexity, Code duplication, Code readability. Also provide a score out of 10 for every evaluation.`
   try {
     const response = await axios.post('https://api.openai.com/v1/chat//completions', {
       messages:[{"role":"user","content":prompt}],
       model:"gpt-3.5-turbo",
-      max_tokens: 350,
-      temperature: 0.7,
     }, {
       headers: {
         'Content-Type': 'application/json',
